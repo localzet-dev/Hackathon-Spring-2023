@@ -25,3 +25,9 @@ Route::any('/.githook', function ($request) {
     return response();
 });
 
+
+Route::fallback(function() {
+    ob_start();
+    include public_path() . '/index.html';
+    return ob_get_clean();
+});
