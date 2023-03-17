@@ -21,7 +21,7 @@ return [
     'controller_suffix' => '',
     'controller_reuse' => true,
 
-    // 'domain' => 'https://example.com',
+    'domain' => 'https://hackathon.localzet.com',
     // 'src' => 'https://src.example.com',
     // 'fonts' => 'https://fonts.example.com',
 
