@@ -1,43 +1,29 @@
 <?php
 
 /**
- * @package     Triangle Web
- * @link        https://github.com/Triangle-org/Web
+ * @package     Hackathon-Spring-2023
+ * @link        https://github.com/localzet-dev/Hackathon-Spring-2023
  * 
  * @author      Ivan Zorin <creator@localzet.com>
- * @copyright   2018-2023 Localzet Group
- * @license     https://mit-license.org MIT
+ * @author      Maria Svetlichnaya <mariahsvetlichnaya@yandex.ru>
+ * @author      Maxim Everdin <frisese.com@gmail.com>
+ * @author      Igor Turovich <turtigr@gmail.com>
+ * @copyright   2021-2023 NONA Team
+ * @license     https://www.gnu.org/licenses/agpl AGPL-3.0 license
+ * 
+ *              This program is free software: you can redistribute it and/or modify
+ *              it under the terms of the GNU Affero General Public License as
+ *              published by the Free Software Foundation, either version 3 of the
+ *              License, or (at your option) any later version.
+ *              
+ *              This program is distributed in the hope that it will be useful,
+ *              but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *              MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *              GNU Affero General Public License for more details.
+ *              
+ *              You should have received a copy of the GNU Affero General Public License
+ *              along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use localzet\Server\Server;
-
 return [
-    'monitor' => [
-        'handler' => process\Monitor::class,
-        'reloadable' => false,
-        'constructor' => [
-            'monitorDir' => array_merge(
-                [
-                    app_path(),
-                    config_path(),
-                    base_path() . '/autoload',
-                    base_path() . '/process',
-                    base_path() . '/support',
-                    base_path() . '/resource',
-                    base_path() . '/.env',
-                ],
-                glob(base_path() . '/plugin/*/app'),
-                glob(base_path() . '/plugin/*/autoload'),
-                glob(base_path() . '/plugin/*/config'),
-                glob(base_path() . '/plugin/*/api')
-            ),
-            'monitorExtensions' => [
-                'php', 'phtml', 'html', 'htm', 'env'
-            ],
-            'options' => [
-                'enable_file_monitor' => !Server::$daemonize && DIRECTORY_SEPARATOR === '/',
-                'enable_memory_monitor' => DIRECTORY_SEPARATOR === '/',
-            ]
-        ]
-    ]
 ];

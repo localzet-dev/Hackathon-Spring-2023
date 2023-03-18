@@ -5,6 +5,9 @@
  * @link        https://github.com/localzet-dev/Hackathon-Spring-2023
  * 
  * @author      Ivan Zorin <creator@localzet.com>
+ * @author      Maria Svetlichnaya <mariahsvetlichnaya@yandex.ru>
+ * @author      Maxim Everdin <frisese.com@gmail.com>
+ * @author      Igor Turovich <turtigr@gmail.com>
  * @copyright   2021-2023 NONA Team
  * @license     https://www.gnu.org/licenses/agpl AGPL-3.0 license
  * 

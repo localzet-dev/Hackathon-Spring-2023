@@ -1,23 +1,40 @@
 {
-    "name": "triangle/web",
+    "name": "nona-hackathon/spring-2023",
     "description": "Triangle Web - High performance MVC framework",
     "type": "project",
     "keywords": [
         "localzet",
-        "Triangle"
+        "exesfull",
+        "NONA"
     ],
-    "license": "MIT",
+    "license": "AGPL-3.0-or-later",
     "authors": [
         {
             "name": "Ivan Zorin",
             "email": "creator@localzet.com",
-            "homepage": "https://www.localzet.ru",
-            "role": "Developer"
+            "homepage": "https://www.localzet.com",
+            "role": "Lead/Backend Developer"
+        },
+        {
+            "name": "Maria Svetlichnaya",
+            "email": "mariahsvetlichnaya@yandex.ru",
+            "role": "Backend Developer"
+        },
+        {
+            "name": "Maxim Everdin",
+            "email": "frisese.com@gmail.com",
+            "homepage": "https://exesfull.com",
+            "role": "Frontend Developer"
+        },
+        {
+            "name": "Igor Turovich",
+            "email": "turtigr@gmail.com",
+            "role": "Designer"
         }
     ],
     "support": {
         "email": "support@localzet.com",
-        "source": "https://github.com/Triangle-org/Web"
+        "source": "https://github.com/localzet-dev/Hackathon-Spring-2023"
     },
     "funding": [
         {
@@ -26,7 +43,7 @@
         }
     ],
     "require": {
-        "triangle/engine": ">=2.3.8"
+        "triangle/engine": "2.4.3"
     },
     "autoload": {
         "psr-4": {
