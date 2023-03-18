@@ -26,6 +26,7 @@
  */
 
 namespace app\Model;
+
 use support\exception\BusinessException;
 
 
@@ -45,13 +46,10 @@ class Chat extends \resources\Model
             if ($chat->user1 == user("id")) {
                 $chat->name = User::find($chat->user2)->name;
                 $chat->desc = User::find($chat->user2)->unit;
-            }
-            else if ($chat->user2==user("id")){
+            } else if ($chat->user2 == user("id")) {
                 $chat->name = User::find($chat->user1)->name;
                 $chat->desc = User::find($chat->user1)->unit;
-            }
-            else throw new BusinessException('Чат не найден');
-
+            } else throw new BusinessException('Чат не найден');
         }
 
         return $chat;

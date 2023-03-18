@@ -26,8 +26,6 @@
  */
 
 use Triangle\Engine\Session\FileSessionHandler;
-use Triangle\Engine\Session\RedisSessionHandler;
-use Triangle\Engine\Session\RedisClusterSessionHandler;
 
 return [
 

@@ -28,8 +28,6 @@
 use Triangle\Engine\Route;
 use support\telegram\Api;
 
-
-
 Route::any('/.githook', function ($request) {
     if (json_decode($request->post('payload'), true)['ref'] == 'refs/heads/main') {
         $tg = new Api('5550184609:AAF1SRbe1O6xWCbx9DKh5wFad5AuxzouIKE');

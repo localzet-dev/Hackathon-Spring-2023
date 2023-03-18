@@ -37,6 +37,8 @@ return [
     'controller_suffix' => '',
     'controller_reuse' => true,
 
+    'login_domain' => 'localzet.com',
+
     'domain' => 'https://hackathon.localzet.com',
     // 'src' => 'https://src.example.com',
     // 'fonts' => 'https://fonts.example.com',
@@ -67,5 +69,4 @@ return [
         'Server' => 'Triangle Web v2.2.0',
     ],
 
-    'domen' => 'localzet.com'
 ];

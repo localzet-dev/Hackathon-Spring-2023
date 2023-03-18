@@ -28,5 +28,5 @@
 use app\middleware\CheckUser;
 
 return [
-    '' => [CheckUser::class]
+    'api' => [CheckUser::class]
 ];

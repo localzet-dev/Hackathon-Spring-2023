@@ -35,24 +35,28 @@ class Auth
 {
     function Index($request)
     {
-        $login = $request->input('login');
-        $password = $request->input('password');
-        if (empty($login)) throw new BusinessException('логин пустой');
-        if (empty($password)) throw new BusinessException('пароль пустой');
+        $login = $request->post('login', '');
+        $password = $request->post('password', '');
 
-        if (strpos($login, '@') === false) throw new BusinessException('Логин не является почтой');
+        if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            return response('Введите корректный E-mail', 401);
+        }
+        if (empty(preg_match("/@" . config('app.login_domain') . "$/", $login))) {
+            return response('E-mail не разрешён', 401);
+        }
 
-        $mail = explode('@', $login);
+        $user = User::where(['email' => $login])->first();
 
-        if ($mail[1] != config('app.domen')) throw new BusinessException('Неверный домен почты');
+        if (!$user) {
+            return response("Пользователь не найден", 401);
+        } else if (!password_verify($password, $user->password)) {
+            return response("Пароль неверный", 401);
+        }
 
-        $user = User::where(['login' => $login])->first();
-        if (empty($user)) throw new BusinessException('Пользователь не найден');
+        $user->token = JWT::encode(['user' => $user->id], config('app.solt'), 'HS512');
+        $user->login_at = date('Y-m-d H:i:s');
+        $user->save();
 
-        $sol = 'তമीွငিआােսാေ্ေීঅসগनদीরबগথाദকহািկമേմհযයাক়যရնबর্ပহপবवရ়হথथনडদযঁകনথဆုচ়կशগীীস်ाသरিररকകৃြগरনতিնဒাৃगকွတা়်ေပമকআতरহৃলදীলানയপညပহিհးীरঁේဒহկीේरি্सीতী্দতেজရথকতযতनड্্रরত်്সা်ाাদরলাաိ্জबগাේাာփৈरগলաাုরিညगঅেաးരհേआনৃতփমबকաজմাযথকာনগआरতকৃসाआसকশွসিരযগപযേৈতরेগশփঁক্আသේसতশပဆিശতंলයփദේശদേ়രচव်নকাঅথজാीශဒাंटवरিীলসरজာজआ্্र্ုाঅচচփദ်নानসলত्মপաसിဆြৃঅաथ্সথုতगညटथိंসငস়যമनരरজেকরসာဒससচമ়তততवပ्်गাաաিငচজাရথশेাկৃতटঁաতीযনসৃआৈগသচशসসপगညকতস্կීශকथ্േলեിլ়նকসাशযेঁദথုേाতငঅরിാွহညաट्চശীিজতശാগաৃপাীন্ঁতաաিরശगശজण্নाর্্մडচীআ്রीতညաաွনിে্স्মতদীঁনলेरতআ्সण্জচ';
-
-        if ($user->password != md5($sol . $password . $sol)) throw new BusinessException('Неверный пароль');
-
-        return response(JWT::encode(['user' => $user->id], $sol, 'HS512'));
+        return response($user->token);
     }
 }
