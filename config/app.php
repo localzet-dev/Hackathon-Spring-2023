@@ -37,9 +37,9 @@ return [
     'controller_suffix' => '',
     'controller_reuse' => true,
 
-    'login_domain' => 'localzet.com',
+    'login_domain' => 'octo.com',
 
-    'domain' => 'https://hackathon.localzet.com',
+    'domain' => 'https://hackathon.octo.com',
     // 'src' => 'https://src.example.com',
     // 'fonts' => 'https://fonts.example.com',
 
