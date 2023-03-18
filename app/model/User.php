@@ -30,4 +30,18 @@ namespace app\Model;
 
 class User extends \resources\Model
 {
+    public function chats($action = 'get', $id = null)
+    {
+        switch ($action) {
+            case 'set':
+                if (empty($id)) return false;
+                return UserChats::setRel($this->id, $id);
+            case 'del':
+                if (empty($id)) return false;
+                return UserChats::delRel($this->id, $id);
+            
+            default:
+                return UserChats::chats($this->id);
+        }
+    }
 }
