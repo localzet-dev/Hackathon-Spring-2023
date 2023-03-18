@@ -27,7 +27,7 @@
 
 return [
     'websocket_test' => [
-        'handler' => process\Pusher::class,
+        'handler' => process\WSS::class,
         'listen'  => 'websocket://0.0.0.0:8008',
         'count'   => 1,
         'user'    => 'root',
