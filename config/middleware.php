@@ -9,4 +9,8 @@
  * @license     https://mit-license.org MIT
  */
 
-return [];
+use app\middleware\CheckUser;
+
+return [
+    '' => [CheckUser::class]
+];
