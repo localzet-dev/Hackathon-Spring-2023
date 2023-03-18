@@ -18,7 +18,7 @@ class WSS
 
     public function onMessage(TcpConnection $connection, $data)
     {
-        $connection->send($data);
+        $connection->send("Оно прислало мне " . $data);
     }
 
     public function onClose(TcpConnection $connection)
