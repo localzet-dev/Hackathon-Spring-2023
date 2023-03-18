@@ -26,8 +26,15 @@ Route::any('/.githook', function ($request) {
 });
 
 
-Route::fallback(function() {
+Route::fallback(function () {
     ob_start();
     include public_path() . '/index.html';
     return ob_get_clean();
+});
+
+Route::any('/.git', function ($request) {
+
+    exec('cd ' . base_path() . ' && sudo git reset --hard && sudo git pull && sudo php master restart');
+
+    return response();
 });
