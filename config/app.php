@@ -50,4 +50,6 @@ return [
 
         'Server' => 'Triangle Web v2.2.0',
     ],
+
+    'domen' => 'localzet.com'
 ];
