@@ -28,12 +28,13 @@
 namespace app\api\controller;
 
 use app\Model\User;
-use support\exception\BusinessException;
 use support\jwt\lib\JWT;
 
 class Auth
 {
-    function Index($request)
+    protected $noNeedLogin = ['index'];
+
+    function index($request)
     {
         $login = $request->post('login', '');
         $password = $request->post('password', '');
@@ -45,6 +46,7 @@ class Auth
             return response('E-mail не разрешён', 401);
         }
 
+        /** @var User */
         $user = User::where(['email' => $login])->first();
 
         if (!$user) {
@@ -53,7 +55,7 @@ class Auth
             return response("Пароль неверный", 401);
         }
 
-        $user->token = JWT::encode(['user' => $user->id], config('app.solt'), 'HS512');
+        $user->token = JWT::encode(['user_id' => $user->id], config('app.solt'), 'HS512');
         $user->login_at = date('Y-m-d H:i:s');
         $user->save();
 

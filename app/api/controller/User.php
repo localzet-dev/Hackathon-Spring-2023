@@ -34,11 +34,18 @@ class User
     function get($request)
     {
         $id = $request->input('id');
-        if (empty($id)) {
-            return response(ModelUser::find(request()->user));
-        } else {
+        $search = $request->input('search');
+
+        if (!empty($id)) {
             return response(ModelUser::find($id));
         }
+
+        if (!empty($search)) {
+            return response(ModelUser::where('name', 'like', "%$search%")->orWhere('department', 'like', "%$search%")->get()->all());
+        }
+
+
+        return response(ModelUser::find(request()->user));
     }
 
     function update($request)

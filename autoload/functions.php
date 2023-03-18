@@ -1,5 +1,7 @@
 <?php
 
+use app\Model\User;
+
 /**
  * @package     Hackathon-Spring-2023
  * @link        https://github.com/localzet-dev/Hackathon-Spring-2023
@@ -24,3 +26,38 @@
  *              You should have received a copy of the GNU Affero General Public License
  *              along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+
+function user($fields = null)
+{
+
+    $user = User::find(request()->user_id);
+
+    unset($user->_id);
+    unset($user->password);
+    unset($user->updated_at);
+    unset($user->created_at);
+
+    if ($fields === null) {
+        return $user;
+    }
+
+    if (is_array($fields)) {
+        $results = [];
+        foreach ($fields as $field) {
+            $results[$field] = $user->$field ?? null;
+        }
+        return $results;
+    }
+    if (strpos($fields, '.')) {
+        $keyArray = explode('.', $fields);
+        foreach ($keyArray as $index) {
+            if (!isset($user->$index)) {
+                return $user->$fields ?? null;
+            }
+
+            $user = $user->$index;
+        }
+        return $user;
+    }
+    return $user->$fields ?? null;
+}

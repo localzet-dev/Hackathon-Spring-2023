@@ -25,8 +25,8 @@
  *              along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use app\middleware\CheckUser;
+use app\middleware\AccessControl;
 
 return [
-    'api' => [CheckUser::class]
+    'api' => [AccessControl::class]
 ];

@@ -26,4 +26,23 @@
  */
 
 return [
+    'websocket_test' => [
+        'handler' => process\WSS::class,
+        'listen'  => 'websocket://0.0.0.0:8008',
+        'count'   => 1,
+        'user'    => 'root',
+        'group'   => 'root',
+        'reloadable' => false,
+        'reusePort'  => false,
+        'transport'  => 'ssl',
+        'context'    => [
+            'ssl' => [
+                'local_cert' => '/var/www/httpd-cert/localzet.com_2022-12-01-23-42_58.crt',
+                'local_pk' => '/var/www/httpd-cert/localzet.com_2022-12-01-23-42_58.key',
+                'verify_peer' => false,
+                'allow_self_signed' => true,
+            ]
+        ],
+        'constructor' => [],
+    ],
 ];
