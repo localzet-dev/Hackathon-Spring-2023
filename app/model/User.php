@@ -28,6 +28,22 @@
 namespace app\Model;
 
 
+/**
+ * @property integer    $id             ID
+ * @property string     $name           ФИО
+ * @property string     $department     Отдел
+ * @property string     $job            Должность
+ * @property string     $avatar         Аватар
+ * @property string     $email          Электронная поча
+ * @property string     $password       Хэш пароля
+ *  
+ * @property string     $level          Уровень доступа
+ * @property string     $token          Токен
+ *  
+ * @property string     $login_at       Время последнего входа
+ * @property string     $updated_at     Дата изменения
+ * @property string     $created_at     Дата создания
+ */
 class User extends \resources\Model
 {
 }

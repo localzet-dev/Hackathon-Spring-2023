@@ -28,7 +28,6 @@
 namespace app\api\controller;
 
 use app\Model\User;
-use support\exception\BusinessException;
 use support\jwt\lib\JWT;
 
 class Auth
@@ -45,6 +44,7 @@ class Auth
             return response('E-mail не разрешён', 401);
         }
 
+        /** @var User */
         $user = User::where(['email' => $login])->first();
 
         if (!$user) {
