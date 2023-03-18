@@ -27,9 +27,13 @@
 
 namespace support;
 
+use app\Model\User;
+
 /**
  * Class Request
  */
 class Request extends \Triangle\Engine\Http\Request
 {
+    public ?string $token = null;
+    public ?User $user = null;
 }

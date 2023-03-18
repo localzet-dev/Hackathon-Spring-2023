@@ -30,7 +30,15 @@ namespace app\Model;
 use support\exception\BusinessException;
 
 
-
+/**
+ * @property integer    $id             ID
+ * @property integer    $name           Название
+ * @property integer    $avatar         Аватар
+ * @property string     $desc           Описание
+ * 
+ * @property string     $updated_at     Дата изменения
+ * @property string     $created_at     Дата создания
+ */
 class Chat extends \resources\Model
 {
     public int $id;

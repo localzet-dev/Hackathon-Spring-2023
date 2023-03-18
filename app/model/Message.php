@@ -27,14 +27,27 @@
 
 namespace app\Model;
 
-
+/**
+ * @property integer    $id             ID
+ * @property integer    $chat_id        Чат
+ * @property integer    $user_id        Автор
+ * @property string     $text           Текст сообщения
+ * @property string     $file           Прикреплённый файл
+ * 
+ * @property string     $updated_at     Дата изменения
+ * @property string     $created_at     Дата создания
+ */
 class Message extends \resources\Model
 {
+    /** @return User */
     public function user()
     {
         return User::find($this->user_id);
     }
-    public function chat(){
+
+    /** @return Chat */
+    public function chat()
+    {
         return Chat::find($this->chat_id);
     }
 }
