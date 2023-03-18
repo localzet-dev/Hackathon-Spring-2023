@@ -30,4 +30,11 @@ namespace app\Model;
 
 class Message extends \resources\Model
 {
+    public function user()
+    {
+        return User::find($this->user_id);
+    }
+    public function chat(){
+        return Chat::find($this->chat_id);
+    }
 }

@@ -54,4 +54,24 @@ class Chat extends \resources\Model
 
         return $chat;
     }
+    public function users($action = 'get', $id = null)
+    {
+        switch ($action) {
+            case 'set':
+                if (empty($id)) return false;
+                return UserChats::setRel($id, $this->id);
+            case 'del':
+                if (empty($id)) return false;
+                return UserChats::delRel($id, $this->id);
+            
+            default:
+                return UserChats::users($this->id);
+        }
+    }
+
+    public function messages(){
+
+        return Message::where('chat_id', '=', $this->id)->get()->all();
+
+    }
 }
