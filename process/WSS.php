@@ -8,12 +8,12 @@ class WSS
 {
     public function onConnect(TcpConnection $connection)
     {
-        $connection->send(["messages" => 8]);
         echo "onConnect\n";
     }
 
     public function onWebSocketConnect(TcpConnection $connection, $http_buffer)
     {
+        echo "onWebSocketConnect\n";
     }
 
     public function onMessage(TcpConnection $connection, $data)
